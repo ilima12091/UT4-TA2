@@ -1,0 +1,13 @@
+<section>
+  <h2>Card creation</h2>
+  <form [formGroup]="creationForm" (submit)="submitCard()">
+    <label for="title">Title</label>
+    <input id="title" type="text" formControlName="title" />
+    <label for="description">Description</label>
+    <input id="description" type="text" formControlName="description" />
+    <select id="movieImageUrl">
+      <option value="">Select a movie</option>
+    </select>
+    <button>Create card</button>
+  </form>
+</section>
