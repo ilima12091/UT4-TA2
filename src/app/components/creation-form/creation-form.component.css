@@ -1,9 +1,10 @@
 section {
-    background-color: #f2f5f8;
+    background-color: rgba(242, 245, 248, 0.8); 
     padding: 20px;
     border-radius: 5px;
-    
-  }
+}
+  
+  
   
   h2 {
     color: #005c98;
