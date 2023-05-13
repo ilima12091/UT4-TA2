@@ -5,8 +5,9 @@
     <input id="title" type="text" formControlName="title" />
     <label for="description">Description</label>
     <input id="description" type="text" formControlName="description" />
-    <select id="movieImageUrl">
-      <option value="">Select a movie</option>
+    <label for="movie">Select a Movie</label>
+    <select id="movie" formControlName="movieImageUrl">
+      <option *ngFor="let movie of movies" [value]="movie.title">{{ movie.title }}</option>
     </select>
     <button>Create card</button>
   </form>
