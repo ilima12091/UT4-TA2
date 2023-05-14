@@ -1,3 +1,7 @@
-<section>
-  <app-card *ngFor="let card of cards" [card]="card" />
-</section>
+<div class="container">
+  <div class="card" *ngFor="let card of cards">
+    <h2>{{ card.title }}</h2>
+    <p>{{ card.description }}</p>
+    <img [src]="card.movieImageUrl" alt="Movie Image" />
+  </div>
+</div>

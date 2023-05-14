@@ -5,19 +5,23 @@ import { Card } from '../interfaces/card';
   providedIn: 'root',
 })
 export class CardsService {
-  url = 'http://localhost:3000';
+  private cards: Card[] = [];
 
   constructor() {}
 
-  async getAllCards(): Promise<Card[]> {
-    return (await (await fetch(`${this.url}/cards`)).json()) ?? [];
+  getAllCards(): Promise<Card[]> {
+    return Promise.resolve(this.cards);
   }
 
-  async postCard(
-    title: string,
-    descripntion: string,
-    movieImageUrl: string
-  ): Promise<boolean> {
-    return true;
+  postCard(title: string, description: string, movieImageUrl: string): Promise<boolean> {
+    const newCard: Card = {
+      title,
+      description,
+      movieImageUrl
+    };
+
+    this.cards.push(newCard);
+
+    return Promise.resolve(true);
   }
 }

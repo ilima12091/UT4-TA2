@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router'; // Corregido: importar Router
 import { CardsService } from 'src/app/services/cards.service';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -15,15 +16,16 @@ export class CreationFormComponent {
     movieImageUrl: new FormControl(''),
   });
 
-  movies: any[] = []; // Variable para almacenar las películas
+  movies: any[] = [];
 
   constructor(
     private cardsService: CardsService,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router // Corregido: inyectar Router
   ) {}
 
   ngOnInit() {
-    this.loadMovies(); // Llama al método para obtener las películas al inicializar el componente
+    this.loadMovies();
   }
 
   loadMovies() {
@@ -33,6 +35,19 @@ export class CreationFormComponent {
   }
 
   submitCard() {
-    console.log('crear');
+    const { title, description, movieImageUrl } = this.creationForm.value;
+
+    if (title && description && movieImageUrl) {
+      this.cardsService.postCard(title, description, movieImageUrl)
+        .then(success => {
+          if (success) {
+            this.router.navigate(['/cards']);
+          } else {
+            console.log('Error al agregar la tarjeta.');
+          }
+        });
+    } else {
+      console.log('Faltan datos en el formulario.');
+    }
   }
 }
