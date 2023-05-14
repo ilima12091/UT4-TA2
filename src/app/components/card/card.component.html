@@ -1,5 +1,22 @@
-<div>
-  <h3>{{ card.title }}</h3>
-  <p>{{ card.description }}</p>
-  <p>{{ card.movieImageUrl }}</p>
+<div class="card" *ngIf="!isEdittingModeEnabled; else elseBlock">
+  <img
+    *ngIf="card.movieImageUrl"
+    class="card-image"
+    [src]="moviesImagesBaseUrl + card.movieImageUrl"
+  />
+  <div class="card-body">
+    <h3 class="card-title">{{ card.title }}</h3>
+    <p class="card-description">{{ card.description }}</p>
+    <button class="card-edition-button" (click)="toggleEdittingMode()">
+      <i class="fa-solid fa-pen"></i>
+    </button>
+  </div>
 </div>
+
+<ng-template #elseBlock>
+  <app-creation-form
+    [isEditting]="true"
+    [toggleEdittingMode]="toggleEdittingMode"
+    [card]="card"
+  />
+</ng-template>

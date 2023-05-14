@@ -5,6 +5,10 @@ import { Card } from '../interfaces/card';
   providedIn: 'root',
 })
 export class CardsService {
+  commonHeaders = {
+    'Content-Type': 'application/json',
+    Accept: '*/*',
+  };
   url = 'http://localhost:3000';
 
   constructor() {}
@@ -13,11 +17,21 @@ export class CardsService {
     return (await (await fetch(`${this.url}/cards`)).json()) ?? [];
   }
 
-  async postCard(
-    title: string,
-    descripntion: string,
-    movieImageUrl: string
-  ): Promise<boolean> {
-    return true;
+  async postCard(card: Card): Promise<boolean> {
+    const result = await fetch(`${this.url}/cards`, {
+      method: 'POST',
+      headers: this.commonHeaders,
+      body: JSON.stringify(card),
+    });
+    return result.ok;
+  }
+
+  async putCard(card: Card): Promise<boolean> {
+    const result = await fetch(`${this.url}/cards/${card.id}`, {
+      method: 'PUT',
+      headers: this.commonHeaders,
+      body: JSON.stringify(card),
+    });
+    return result.ok;
   }
 }
