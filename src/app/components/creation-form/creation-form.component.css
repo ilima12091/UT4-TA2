@@ -1,50 +1,46 @@
 section {
-    background-color: rgba(242, 245, 248, 0.8); 
-    padding: 20px;
-    border-radius: 5px;
+  background-color: rgba(242, 245, 248);
+  padding: 20px;
+  border-radius: 10px;
 }
-  
-  
-  
-  h2 {
-    color: #005c98;
-    font-size: 24px;
-    margin-bottom: 20px;
 
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    color: #005c98;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  input,
-  select {
-    padding: 10px;
-    border: 1px solid #005c98;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-  
-  button {
-    background-color: #005c98;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #003866;
-  }
-  
+h2 {
+  color: #005c98;
+  font-size: 24px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #005c98;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #005c98;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #005c98;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003866;
+}

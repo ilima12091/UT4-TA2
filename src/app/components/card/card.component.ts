@@ -8,4 +8,6 @@ import { Card } from 'src/app/interfaces/card';
 })
 export class CardComponent {
   @Input() card!: Card;
+  moviesImagesBaseUrl: string = 'https://image.tmdb.org/t/p/w500';
+  edittingModeEnabled: boolean = false;
 }
