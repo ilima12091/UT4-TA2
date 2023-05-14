@@ -1,14 +1,39 @@
 <section>
-  <h2>Card creation</h2>
+  <h2>{{ isEditting ? "Card edition" : "Card creation" }}</h2>
   <form [formGroup]="creationForm" (submit)="submitCard()">
     <label for="title">Title</label>
-    <input id="title" type="text" formControlName="title" />
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      placeholder="Enter a title"
+    />
     <label for="description">Description</label>
-    <input id="description" type="text" formControlName="description" />
+    <input
+      id="description"
+      type="text"
+      formControlName="description"
+      placeholder="Enter a description"
+    />
     <label for="movie">Select a Movie</label>
     <select id="movie" formControlName="movieImageUrl">
-      <option *ngFor="let movie of movies" [value]="movie.title">{{ movie.title }}</option>
+      <option value="">Select a movie</option>
+      <option
+        *ngFor="let movie of movies"
+        [value]="movie.id + '|' + movie.poster_path"
+      >
+        {{ movie.title }}
+      </option>
     </select>
-    <button>Create card</button>
+    <div class="card-creation-action-buttons">
+      <button
+        *ngIf="isEditting"
+        (click)="toggleEdittingMode()"
+        class="delete-button"
+      >
+        Cancel
+      </button>
+      <button>{{ isEditting ? "Save changes" : "Create card" }}</button>
+    </div>
   </form>
 </section>

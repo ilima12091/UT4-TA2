@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Card } from 'src/app/interfaces/card';
+import { Movie } from 'src/app/interfaces/movie';
 import { CardsService } from 'src/app/services/cards.service';
-import { MovieService } from 'src/app/services/movie.service';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-creation-form',
@@ -9,30 +11,58 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./creation-form.component.css'],
 })
 export class CreationFormComponent {
+  @Input() isEditting: boolean = false;
+  @Input() toggleEdittingMode!: () => void;
+  @Input() card!: Card;
+
+  cardsService: CardsService = inject(CardsService);
+  moviesService: MoviesService = inject(MoviesService);
+
   creationForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    movieImageUrl: new FormControl(''),
+    title: new FormControl(),
+    description: new FormControl(),
+    movieImageUrl: new FormControl(),
   });
 
-  movies: any[] = []; // Variable para almacenar las películas
+  movies: Movie[] = []; // Variable para almacenar las películas
 
-  constructor(
-    private cardsService: CardsService,
-    private movieService: MovieService
-  ) {}
+  constructor() {}
 
   ngOnInit() {
+    const movieImageUrl = `${this.card?.selectedMovieId}|${this.card?.movieImageUrl}`;
+    this.creationForm.setValue({
+      title: this.card?.title ?? '',
+      description: this.card?.description ?? '',
+      movieImageUrl: this.card?.selectedMovieId ? movieImageUrl : '',
+    });
     this.loadMovies(); // Llama al método para obtener las películas al inicializar el componente
   }
 
   loadMovies() {
-    this.movieService.getTopRatedMovies().then((data) => {
+    this.moviesService.getTopRatedMovies().then((data) => {
       this.movies = data.results;
     });
   }
 
   submitCard() {
-    console.log('crear');
+    const { title, description } = this.creationForm.value;
+    const [selectedMovieId, movieImageUrl] =
+      this.creationForm.value.movieImageUrl.split('|');
+    const card = {
+      id: this.card?.id ?? Math.floor(Math.random() * 1000),
+      title,
+      description,
+      selectedMovieId,
+      movieImageUrl,
+    };
+    if (!this.isEditting) {
+      this.cardsService.postCard(card).then((result) => {
+        if (result) location.reload();
+      });
+    } else {
+      this.cardsService.putCard(card).then((result) => {
+        if (result) location.reload();
+      });
+    }
   }
 }
