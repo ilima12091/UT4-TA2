@@ -48,8 +48,7 @@ export class CreationFormComponent {
     const { title, description } = this.creationForm.value;
     const [selectedMovieId, movieImageUrl] =
       this.creationForm.value.movieImageUrl.split('|');
-    const card = {
-      id: this.card?.id ?? Math.floor(Math.random() * 1000),
+    let card: Card = {
       title,
       description,
       selectedMovieId,
@@ -60,6 +59,7 @@ export class CreationFormComponent {
         if (result) location.reload();
       });
     } else {
+      card.id = this.card.id;
       this.cardsService.putCard(card).then((result) => {
         if (result) location.reload();
       });
