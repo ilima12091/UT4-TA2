@@ -52,10 +52,10 @@ button:hover {
   background-color: #003866;
 }
 
-.delete-button {
+.cancel-button {
   background-color: red;
 }
 
-.delete-button:hover {
+.cancel-button:hover {
   background-color: rgb(189, 3, 3);
 }
