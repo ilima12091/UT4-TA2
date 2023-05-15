@@ -34,4 +34,12 @@ export class CardsService {
     });
     return result.ok;
   }
+
+  async deleteCard(cardId: number): Promise<boolean> {
+    const result = await fetch(`${this.url}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this.commonHeaders,
+    });
+    return result.ok;
+  }
 }

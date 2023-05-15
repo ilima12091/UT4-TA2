@@ -1,4 +1,7 @@
 <div class="card" *ngIf="!isEdittingModeEnabled; else elseBlock">
+  <button class="card-delete-button" (click)="deleteCard()">
+    <i class="fa-solid fa-trash"></i>
+  </button>
   <img
     *ngIf="card.movieImageUrl"
     class="card-image"

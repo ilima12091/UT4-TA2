@@ -1,18 +1,11 @@
 {
   "cards": [
     {
-      "id": 1,
       "title": "test",
-      "description": "asdasdsadasdas",
-      "selectedMovieId": "424",
-      "movieImageUrl": "/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"
-    },
-    {
-      "title": "test2",
-      "description": "testtest",
-      "selectedMovieId": "129",
-      "movieImageUrl": "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
-      "id": 2
+      "description": "test",
+      "selectedMovieId": "372058",
+      "movieImageUrl": "/q719jXXEzOoYaps6babgKnONONX.jpg",
+      "id": 1
     }
   ]
 }
