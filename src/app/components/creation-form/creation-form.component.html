@@ -1,4 +1,4 @@
-<section>
+<section [class]="isEditting ? 'editting-card' : ''">
   <h2>{{ isEditting ? "Card edition" : "Card creation" }}</h2>
   <form [formGroup]="creationForm" (submit)="submitCard()">
     <label for="title">Title</label>
