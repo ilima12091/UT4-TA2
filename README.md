@@ -1,27 +1,36 @@
+
 # CardsApp
+
+The cards application is based on the Angular framework that allows users to create, modify and delete cards with information about movies. Each card consists of a title, a description, and an associated movie.
+
+The main functionality of the application is the ability to create and store new cards. Users can provide a title, description, and select a specific movie.
+
+Once a card is created, users also have the option to modify its content. They can edit the title, description and change the associated movie. This functionality allows you to keep card information up to date as movie data changes or new ones are added.
+
+In addition, the application offers the possibility of deleting cards. Users can select a specific card and delete it from the list of available cards. This is useful in case a card has been added incorrectly or is no longer relevant.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
-## Development server
+## How to use and install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To launch the app, you must first make sure you have Angular CLI and npm installed. Then follow these steps:
 
-## Code scaffolding
+ 1- Open a terminal or command line in the root directory of your Angular project.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2- Run the following command to start the Angular development server on `local port 4200`:
 
-## Build
+```bash
+"ng serve"
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This will compile the project and launch it in your default browser. You can access the application at `http://localhost:4200/`.
 
-## Running unit tests
+3- For the card system to work correctly, you will need to run the json-server command. Open a new terminal or command line in the root directory of the project. Run the following command to start json-server and look at the "db.json" file:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+json-server db.json --watch
+```
 
-## Running end-to-end tests
+This will start the json-server and set a mock REST API to `http://localhost:3000/`. The Angular application will communicate with this API to perform CRUD operations on the cards.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+With these steps, the application will be up and running and you will be able to create, modify and delete cards with associated titles, descriptions and movies. The UI will be available at `http://localhost:4200/` and will communicate with the json-server at `http://localhost:3000/` to get and update card data.
